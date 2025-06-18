@@ -7,6 +7,7 @@ function CollagePage() {
   const [selectedImage, setSelectedImage] = useState(null);
 
   const imageList = [
+    "img0.jpg",
     "img1.jpg",
     "img2.jpg",
     "img3.jpg",
@@ -20,7 +21,23 @@ function CollagePage() {
     "img11.jpg",
     "img12.jpg",
     "img13.jpg",
-    "img14.jpg"
+    "img14.jpg",
+    
+    "img16.jpg",
+    "img17.jpg",
+    "img18.jpg",
+    "img19.jpg",
+    "img20.jpg",
+    "img21.jpg",
+    "img22.jpg",
+    "img23.jpg",
+    "img24.jpg",
+    "img25.jpg",
+    "img26.jpg",
+    "img27.jpg",
+    "img28.jpg",
+    "img29.jpg",
+    "img30.jpg",
   ];
 
   useEffect(() => {

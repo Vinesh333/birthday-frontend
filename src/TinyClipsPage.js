@@ -12,6 +12,7 @@ function TinyClipsPage() {
   const videoList = [
     "video1.mp4",
     "video2.mp4",
+    "video3.mp4",
   ];
 
   const handleVideoClick = (video) => {
