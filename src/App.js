@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 
-function App() {
+import './App.css';
+import HomePage from './HomePage';
+import AlbumPage from './AlbumPage';
+import MemoryLetterPage from './MemoryLetterPage';
+import CollagePage from './CollagePage';
+import TinyClipsPage from './TinyClipsPage';
+import HugPage from './HugPage'; // Import the new HugPage component
+import AlbumLayout from './AlbumLayout';
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      {/* ✅ AlbumLayout wraps all pages and includes the music player */}
+      <Route element={<AlbumLayout />}>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/album" element={<AlbumPage />} />
+        <Route path="/memory-letter" element={<MemoryLetterPage />} />
+        <Route path="/collage" element={<CollagePage />} />
+        <Route path="/tiny-clips" element={<TinyClipsPage />} />
+        <Route path="/hug-page" element={<HugPage />} /> {/* Added new route */}
+      </Route>
+    </Routes>
   );
 }
-
-export default App;

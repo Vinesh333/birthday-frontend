@@ -1,0 +1,372 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Times+New+Roman&display=swap');
+
+/* Hug Page Container with Starry Night Background */
+.hug-page {
+  height: 100vh;
+  width: 100vw;
+  background: radial-gradient(circle at center, #1b263b 0%, #0d1b2a 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Stars Background Layer */
+.hug-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://www.transparenttextures.com/patterns/stardust.png');
+  opacity: 0.8;
+  z-index: 1;
+  animation: twinkle 5s ease-in-out infinite;
+}
+
+/* Twinkle Animation for Stars */
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+/* Floating Friendship Emojis Animation */
+.floating-friends {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.friend-emoji {
+  position: absolute;
+  font-size: 1.5rem;
+  color: #ffd700;
+  opacity: 0.7;
+  animation: floatFriend 10s linear infinite;
+}
+
+.friend-emoji:nth-child(1) { left: 10%; animation-delay: 0s; }
+.friend-emoji:nth-child(2) { left: 30%; animation-delay: 2s; }
+.friend-emoji:nth-child(3) { left: 50%; animation-delay: 4s; }
+.friend-emoji:nth-child(4) { left: 70%; animation-delay: 6s; }
+.friend-emoji:nth-child(5) { left: 90%; animation-delay: 8s; }
+
+@keyframes floatFriend {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Parchment Container */
+.hug-content {
+  background: url('https://www.transparenttextures.com/patterns/paper-fibers.png'), #f5f5dc;
+  background-blend-mode: overlay;
+  padding: 3rem 2rem;
+  border-radius: 15px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), inset 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 90%;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid #d4a017;
+  border-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><path fill="none" stroke="#d4a017" stroke-width="2" d="M0,0 Q2,2 4,0 T8,2 T10,0"/></svg>') 10 stretch;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  position: relative;
+  z-index: 3;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Subtle Pattern Overlay on Parchment (Removed Hearts) */
+.hug-content::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50"><circle cx="25" cy="25" r="5" fill="rgba(212, 160, 23, 0.1)"/></svg>');
+  background-repeat: repeat;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* Fade-in Animation for the Container */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Parchment Rolled Edges */
+.hug-content::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 50px;
+  background: linear-gradient(to bottom, rgba(245, 245, 220, 1), rgba(245, 245, 220, 0));
+  top: -25px;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  box-shadow: 0 -10px 15px -5px rgba(0, 0, 0, 0.3);
+}
+
+/* Sparkles Around Parchment */
+.sparkles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.sparkle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #ffd700;
+  border-radius: 50%;
+  opacity: 0;
+  animation: sparkle 3s ease-in-out infinite;
+}
+
+.sparkle:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+.sparkle:nth-child(2) { top: 20%; right: 15%; animation-delay: 0.5s; }
+.sparkle:nth-child(3) { bottom: 15%; left: 20%; animation-delay: 1s; }
+.sparkle:nth-child(4) { bottom: 10%; right: 10%; animation-delay: 1.5s; }
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+/* Image Styling with Heartbeat on Load */
+.hug-image {
+  max-width: 85%;
+  max-height: 60vh;
+  margin-bottom: 1.5rem;
+  border: 3px solid #d4a017;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(212, 160, 23, 0.5), 0 5px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hug-image:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 20px rgba(212, 160, 23, 0.8), 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.heartbeat-on-load {
+  animation: heartbeat 2s ease-in-out 1;
+}
+
+/* Heartbeat Animation */
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(1.2);
+  }
+  40% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Image Modal Backdrop */
+.image-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Image Modal Content */
+.image-modal-content {
+  position: relative;
+  max-width: 90%;
+  max-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-image {
+  max-width: 100%;
+  max-height: 90vh;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+/* Close Modal Button */
+.close-modal-button {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  background: #ff6f61;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+}
+
+.close-modal-button:hover {
+  background: #e63946;
+}
+
+/* Emoji Styling with Heartbeat */
+.hug-emoji {
+  font-size: 3.5rem;
+  color: #4a3728;
+  margin-top: 1rem;
+  animation: heartbeat 2s ease-in-out infinite;
+}
+
+/* Back Button */
+.back-button {
+  margin-top: 2rem;
+  padding: 10px 20px;
+  background-color: #ffffff;
+  color: #1b263b;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s, transform 0.3s;
+  font-family: 'Times New Roman', serif;
+  z-index: 5;
+}
+
+.back-button:hover {
+  background-color: #e0f0ff;
+  transform: scale(1.05);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .hug-page {
+    padding: 1rem;
+  }
+
+  .hug-content {
+    padding: 2rem 1.5rem;
+  }
+
+  .hug-image {
+    max-width: 90%;
+    max-height: 50vh;
+  }
+
+  .hug-emoji {
+    font-size: 3rem;
+  }
+
+  .back-button {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+
+  .friend-emoji {
+    font-size: 1.2rem;
+  }
+
+  .sparkle {
+    width: 6px;
+    height: 6px;
+  }
+
+  .close-modal-button {
+    width: 25px;
+    height: 25px;
+    font-size: 0.9rem;
+    top: -12px;
+    right: -12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hug-content {
+    padding: 1.5rem 1rem;
+  }
+
+  .hug-image {
+    max-width: 95%;
+    max-height: 45vh;
+  }
+
+  .hug-emoji {
+    font-size: 2.5rem;
+  }
+
+  .back-button {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+
+  .friend-emoji {
+    font-size: 1rem;
+  }
+
+  .sparkle {
+    width: 5px;
+    height: 5px;
+  }
+
+  .close-modal-button {
+    width: 20px;
+    height: 20px;
+    font-size: 0.8rem;
+    top: -10px;
+    right: -10px;
+  }
+}

@@ -1,0 +1,287 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Dancing+Script:wght@700&display=swap');
+
+/* General Reset */
+.tinyclips-page * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Main Container with Gradient Background */
+.tinyclips-page {
+  background: linear-gradient(to bottom, #003973, #005b96, #008cba, #00bfff);
+  color: #fff;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 40px;
+  min-height: 100vh;
+  text-align: center;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+/* Back Button */
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px 15px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background 0.3s ease-in-out;
+  border-radius: 5px;
+  z-index: 30;
+}
+
+.back-button:hover {
+  background: #0056b3;
+}
+
+/* Updated Gallery Title with Cursive Style */
+.tinyclips-page h2 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 3.8rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #010101, #000000, #000000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 20px;
+  margin-top: 60px; /* Avoid overlap with back button */
+  letter-spacing: 2px;
+  filter: drop-shadow(0 0 8px rgba(223, 105, 223, 0.6));
+  position: relative;
+  animation: slideInTitle 1.2s ease-out;
+}
+
+/* Cursive-inspired underline */
+.tinyclips-page h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ffeb3b, transparent);
+  border-radius: 1px;
+}
+
+/* Slide-in animation for the title */
+@keyframes slideInTitle {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Video Gallery */
+.video-gallery {
+  position: relative;
+  width: calc(2 * 360px + 15px); /* 2 videos (360px each) + spaceBetween (15px) */
+  max-width: 100%;
+  margin-top: 20px;
+  padding: 30px 10px;
+  background: rgba(61, 60, 60, 0.9);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+}
+
+/* Video Container */
+.video-container {
+  width: 100%;
+  height: 360px;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+/* Clickable Video */
+.clickable-video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Preserve original aspect ratio */
+  cursor: pointer;
+  border-radius: 15px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.clickable-video:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Swiper Specific Styles */
+.swiper-slide-active .video-container {
+  transform: scale(1.1);
+  z-index: 10;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Fullscreen Overlay */
+.fullscreen-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Fullscreen Content */
+.fullscreen-content {
+  position: relative;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 90%;
+  max-height: 90%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Fullscreen Video */
+.fullscreen-video {
+  width: auto;
+  height: 80vh;
+  max-width: 100%;
+  object-fit: contain; /* Preserve original aspect ratio */
+  border-radius: 10px;
+}
+
+/* Close Button */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.close-btn:hover {
+  background: #0056b3;
+}
+
+/* Download Button */
+.download-btn {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.3s ease-in-out;
+}
+
+.download-btn:hover {
+  background: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .video-gallery {
+    width: calc(2 * 300px + 15px);
+  }
+
+  .video-container {
+    height: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .tinyclips-page {
+    padding: 10px;
+    font-size: 28px;
+  }
+
+  .tinyclips-page h2 {
+    font-size: 2.5rem;
+    margin-top: 50px;
+  }
+
+  .video-gallery {
+    width: 100%;
+    padding: 15px 5px;
+  }
+
+  .video-container {
+    height: 200px;
+  }
+
+  .fullscreen-video {
+    height: 60vh;
+  }
+
+  .download-btn {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+
+  .back-button {
+    top: 15px;
+    left: 15px;
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tinyclips-page {
+    font-size: 22px;
+  }
+
+  .tinyclips-page h2 {
+    font-size: 2.2rem;
+    margin-top: 40px;
+  }
+
+  .video-container {
+    height: 160px;
+  }
+
+  .fullscreen-video {
+    height: 50vh;
+  }
+
+  .download-btn {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+
+  .close-btn {
+    font-size: 16px;
+    padding: 6px;
+  }
+
+  .back-button {
+    top: 10px;
+    left: 10px;
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+}
